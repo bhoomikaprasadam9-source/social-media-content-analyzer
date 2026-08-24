@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Content Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Social Media Content Analyzer</h1>
+        <p class="subtitle">
+            Upload a PDF or image to extract and analyze your social media content.
+        </p>
+
+        <div class="upload-box" id="uploadBox">
+            <p>📄 Drag & Drop your file here</p>
+            <p>or</p>
+
+            <label for="fileInput" class="choose-btn">
+                Choose File
+            </label>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.png,.jpg,.jpeg"
+                hidden
+            >
+
+            <p id="fileName">No file selected</p>
+        </div>
+
+        <button id="analyzeBtn">Analyze Content</button>
+
+        <p id="loading" class="hidden">
+            ⏳ Extracting text... Please wait.
+        </p>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="result" class="hidden">
+
+            <h2>Extracted Content</h2>
+
+            <div id="extractedText" class="text-box"></div>
+
+            <h2>💡 Engagement Suggestions</h2>
+
+            <div class="suggestions">
+                <p>• Keep the content clear and easy to read.</p>
+                <p>• Add relevant hashtags to improve discoverability.</p>
+                <p>• Use a clear call-to-action to encourage engagement.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
