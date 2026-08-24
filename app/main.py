@@ -1,5 +1,8 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from app.extractor import (
     extract_text_from_pdf,
     extract_text_from_image
@@ -10,19 +13,11 @@ app = FastAPI(
     description="Analyze social media content and provide insights.",
     version="1.0.0"
 )
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
 def home():
-    return {
-        "message": "Social Media Content Analyzer API is running!"
-    }
+    return FileResponse("frontend/index.html")
 
 
 @app.get("/health")
